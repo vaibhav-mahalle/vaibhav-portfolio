@@ -38,6 +38,14 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <a
+            href="https://labss-three.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-accent transition-colors"
+          >
+            labs
+          </a>
         </nav>
 
         <button
@@ -64,6 +72,14 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <a
+            href="https://labss-three.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-accent transition-colors"
+          >
+            labs
+          </a>
         </nav>
       )}
 
