@@ -4,15 +4,61 @@ import { notFound } from 'next/navigation';
 import { projects } from '@/lib/projects';
 import { Header, Footer } from '@/components/SiteShell';
 import { ProjectVisual } from '@/components/WorkGrid';
-export function generateStaticParams() { return projects.map(p => ({ slug: p.slug })); }
-export function generateMetadata({ params }: {
-    params: {
-        slug: string;
-    };
-}): Metadata { const p = projects.find(p => p.slug === params.slug); return { title: p ? `${p.title} — Vaibhav Mahalle` : 'Project not found', description: p?.summary, alternates: { canonical: `/work/${params.slug}` } }; }
-export default function WorkPage({ params }: {
-    params: {
-        slug: string;
-    };
-}) { const p = projects.find(p => p.slug === params.slug); if (!p)
-    notFound(); return <><Header /><main className="project-page page-wrap"><Link className="text-link" href="/#work">← Selected work</Link><p className="eyebrow">{p.tags.join(' / ')}</p><h1>{p.title}</h1><p className="project-summary">{p.summary}</p><ProjectVisual project={p}/><div className="case-layout"><aside><span className="eyebrow">CONTRIBUTION</span><p>Backend engineering</p><span className="eyebrow">IN PRACTICE</span><p>{p.impact}</p></aside><div>{[['The problem', p.problem], ['What I built', p.approach], ['The result', p.result]].map(([title, body]) => <section key={title}><h2>{title}</h2><p>{body}</p></section>)}</div></div><Link className="text-link" href="/#work">Explore more work →</Link></main><Footer /></>; }
+
+export function generateStaticParams() {
+  return projects.map((project) => ({ slug: project.slug }));
+}
+
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const project = projects.find((item) => item.slug === params.slug);
+  return {
+    title: project ? `${project.title} — Vaibhav Mahalle` : 'Project not found',
+    description: project?.summary,
+    alternates: { canonical: `/work/${params.slug}` },
+  };
+}
+
+export default function WorkPage({ params }: { params: { slug: string } }) {
+  const project = projects.find((item) => item.slug === params.slug);
+  if (!project) notFound();
+
+  return (
+    <>
+      <Header />
+      <main className="project-page page-wrap">
+        <Link className="text-link back-link" href="/#work">← Selected work</Link>
+        <p className="eyebrow project-kicker">{project.impact}</p>
+        <h1>{project.title}</h1>
+        <p className="project-summary">{project.summary}</p>
+        <ProjectVisual project={project} />
+        <ul className="project-tags" aria-label={`${project.title} technologies`}>
+          {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+        </ul>
+        <div className="case-layout">
+          <aside>
+            <span className="eyebrow">ROLE &amp; SCOPE</span>
+            <p>{project.contribution}</p>
+            <span className="eyebrow">AT A GLANCE</span>
+            <p>{project.impact}</p>
+          </aside>
+          <div className="case-sections">
+            <section>
+              <h2>The problem</h2>
+              <p>{project.problem}</p>
+            </section>
+            <section>
+              <h2>What I built</h2>
+              <p>{project.approach}</p>
+            </section>
+            <section>
+              <h2>The result</h2>
+              <p>{project.result}</p>
+            </section>
+          </div>
+        </div>
+        <Link className="text-link" href="/#work">Explore more work →</Link>
+      </main>
+      <Footer />
+    </>
+  );
+}

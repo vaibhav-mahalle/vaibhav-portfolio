@@ -5,7 +5,7 @@ export function ProjectVisual({ project }: { project: Project }) {
   return (
     <div className={`project-visual ${project.tone}`} aria-hidden="true">
       <span className="visual-note">
-        {project.slug === 'energy-assistant' ? 'A question becomes an answer.' : 'Small parts. One reliable system.'}
+        {project.slug === 'energy-assistant' ? 'A question becomes a grounded answer.' : 'Small parts. One reliable system.'}
       </span>
       <div className="system-flow">
         {project.nodes.map((node, index) => (
@@ -15,16 +15,16 @@ export function ProjectVisual({ project }: { project: Project }) {
           </span>
         ))}
       </div>
-      <span className="visual-caption">{project.tags.join(' / ')}</span>
+      <span className="visual-caption">{project.impact}</span>
     </div>
   );
 }
 
 export default function WorkGrid() {
   return (
-    <section id="work" className="work-section">
+    <section id="work" className="work-section" aria-labelledby="work-heading">
       <div className="section-bar">
-        <p className="eyebrow">THINGS I’VE HELPED BUILD</p>
+        <h2 id="work-heading" className="eyebrow">SYSTEMS I’VE HELPED BUILD</h2>
         <span>Selected projects · 01—04</span>
       </div>
       <div className="work-grid">
@@ -33,8 +33,11 @@ export default function WorkGrid() {
             <ProjectVisual project={project} />
             <div className="card-copy">
               <span className="eyebrow">{project.impact}</span>
-              <h2>{project.title}<span>↗</span></h2>
+              <h2>{project.title}<span aria-hidden="true">↗</span></h2>
               <p>{project.summary}</p>
+              <ul className="tag-list" aria-label={`${project.title} technologies`}>
+                {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+              </ul>
             </div>
           </Link>
         ))}

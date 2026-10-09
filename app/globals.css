@@ -836,13 +836,14 @@ svg {
 .journey-end h2{font-size:42px}
 .journey-end .button{margin:10px 24px 0 0}
 @media(max-width:760px){
- .site-header{width:calc(100% - 40px);min-height:88px;display:block;padding:15px 0 12px}
- .garden-nav{max-width:245px;display:flex;flex-wrap:wrap;gap:10px 16px;padding-right:0;font-size:12px}
+ .site-header{width:calc(100% - 40px);min-height:0;display:flex;flex-direction:column;align-items:stretch;gap:12px;padding:15px 0 12px}
+ .garden-nav{max-width:100%;display:flex;flex-wrap:wrap;gap:10px 16px;padding-right:0;font-size:12px}
  .garden-nav .wordmark{font-size:16px}
- .social-nav{position:absolute;right:0;top:19px;gap:12px;font-size:12px}
+ .social-nav{position:static;margin-left:0;align-self:flex-end;gap:12px;font-size:12px}
  .page-wrap,.site-footer{width:calc(100% - 40px)}
  .intro{padding:52px 0 45px}
- .intro h1{font-size:clamp(39px,10vw,48px);letter-spacing:-1.6px}
+ .intro h1{font-size:clamp(33px,8.7vw,42px);letter-spacing:-1.3px;overflow-wrap:anywhere}
+ .intro .eyebrow,.intro-bottom p{overflow-wrap:anywhere}
  .intro-bottom p{font-size:15px}
  .intro-actions{gap:18px}
  .section-bar{flex-direction:row;align-items:center;gap:10px}
@@ -870,5 +871,42 @@ svg {
  .journey-links{flex-direction:column;gap:15px}
  .journey-end h2{font-size:36px}
 }
-@media(max-width:370px){.garden-nav{max-width:220px;gap:10px 12px}.social-nav{gap:9px}.intro-actions{flex-wrap:wrap}}
+@media(max-width:370px){.garden-nav{max-width:100%;gap:10px 12px}.social-nav{gap:9px}.intro-actions{flex-wrap:wrap}.intro h1{font-size:33px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Resume-backed details */
+.tag-list,.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag-list,.project-tags{list-style:none;padding:0}
+.tag-list li,.project-tags li{border:1px solid var(--line);padding:5px 8px;color:var(--muted);font:10px/1.2 monospace;letter-spacing:.1px}
+.project-page>.project-visual{margin-top:34px}
+.project-tags{margin-top:16px}
+.experience{align-items:start}
+.experience-intro h2{max-width:310px;font-size:34px;line-height:1.15;margin:12px 0}
+.experience-intro>p:last-child{max-width:290px;color:var(--muted);font-size:14px}
+.experience-list{min-width:0}
+.experience-role{padding:0 0 26px;margin:0 0 25px;border-bottom:1px solid var(--line)}
+.experience-role-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.experience-role h3{font-size:17px;font-weight:500;line-height:1.4}
+.experience-role-head span{flex:0 0 auto;color:var(--muted);font-size:12px}
+.experience-role .role-focus{margin:6px 0 10px;color:var(--green);font-size:12px;letter-spacing:.15px}
+.experience-role ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px;line-height:1.6}
+.experience-role li{padding:3px 0 3px 2px}
+.experience-role li::marker{color:var(--green)}
+.education-note{margin:0!important;padding:0!important;color:var(--muted);font-size:12px!important}
+.education-note strong{display:inline!important;font-size:12px!important;color:var(--ink)}
+.project-page .visual-note{max-width:430px}
+@media(max-width:760px){
+  .experience-role-head{display:block}
+  .experience-role-head span{display:block;margin-top:5px}
+  .experience-intro h2{max-width:none}
+  .project-page .system-flow{gap:8px}
+  .project-page .node{width:68px;height:82px}
+  .project-page .node b{font-size:9px}
+  .tag-list{gap:5px}
+}
+@media(max-width:370px){
+  .intro h1{font-size:38px}
+  .project-page .system-flow{gap:6px}
+  .project-page .node{width:62px}
+  .project-page .node:not(:last-child):after{right:-9px}
+}

@@ -31,7 +31,7 @@ export function Footer() {
         <a href="https://github.com/vaibhav-mahalle">GitHub ↗</a>
         <a href="/resume.pdf">Resume ↗</a>
       </div>
-      <small>Vaibhav Mahalle · Backend engineer</small>
+      <small>Vaibhav Mahalle · Senior Backend &amp; Systems Engineer</small>
     </footer>
   );
 }
