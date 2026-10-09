@@ -1,27 +1,6 @@
-import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-});
-
-export const metadata: Metadata = {
-  title: "Vaibhav Mahalle - Backend Engineer",
-  description:
-    "Backend engineer with 5+ years building distributed, event-driven Java/Spring Boot microservices on AWS, plus a production GenAI/LLM multi-agent chatbot.",
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-sans bg-bg text-body antialiased">{children}</body>
-    </html>
-  );
-}
+import type { Metadata } from 'next';
+import './globals.css';
+export const metadata: Metadata = { metadataBase: new URL('https://vaibhavmahalle.com'), title: 'Vaibhav Mahalle — Backend Engineer', description: 'Backend engineer building Java distributed systems and production AI. Explore selected work, interactive Labs, and an illustrated personal journey.', alternates: { canonical: '/' } };
+export default function RootLayout({ children }: {
+    children: React.ReactNode;
+}) { return <html lang="en"><body><a href="#main-content" className="skip-link">Skip to content</a><div id="main-content">{children}</div></body></html>; }
