@@ -777,3 +777,98 @@ svg {
     margin-left: 0;
   }
 }
+
+/* Chester-inspired garden layout */
+.site-header{position:relative;width:min(1260px,calc(100% - 96px));min-height:76px;border:0;border-bottom:1px solid var(--line);justify-content:flex-start;gap:36px}
+.garden-nav{display:flex;align-items:center;gap:25px;font-size:13px}
+.garden-nav .wordmark{font-family:Georgia,'Times New Roman',serif;font-size:17px;margin-right:5px}
+.social-nav{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:13px}
+.social-nav a:first-child{display:grid;place-items:center;width:23px;height:23px;border:1px solid var(--line);border-radius:50%;font-size:11px;font-weight:600}
+.page-wrap,.site-footer{width:min(1120px,calc(100% - 96px))}
+.intro{padding:76px 0 74px;max-width:970px}
+.intro h1{font-size:clamp(44px,5.5vw,70px);line-height:1.12;letter-spacing:-2.4px;margin:20px 0 24px}
+.intro-bottom{align-items:flex-end}
+.intro-bottom p{max-width:500px}
+.section-bar{padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:28px}
+.section-bar>span{font-size:12px;color:var(--muted)}
+.work-grid{grid-template-columns:repeat(12,minmax(0,1fr));align-items:start;gap:50px 28px}
+.work-card{display:block;min-width:0}
+.work-card-1{grid-column:span 7}
+.work-card-2{grid-column:span 5;margin-top:90px}
+.work-card-3{grid-column:span 5}
+.work-card-4{grid-column:span 7;margin-top:62px}
+.project-visual{height:230px;border-radius:5px;padding:20px;transition:transform .25s}
+.work-card:nth-child(2) .project-visual,.work-card:nth-child(3) .project-visual{height:200px}
+.work-card-4 .project-visual{height:245px}
+.work-card:hover .project-visual{transform:translateY(-3px)}
+.card-copy{padding:16px 0 0}
+.card-copy h2,.writing-card h2,.lab-card h2{font:26px/1.2 Georgia,'Times New Roman',serif;letter-spacing:-.35px;margin:7px 0}
+.card-copy h2 span{float:right;font:16px Arial,sans-serif}
+.card-copy p{max-width:460px}
+.node{border-radius:3px;box-shadow:none}
+.node-1,.node-2{transform:none}
+.writing-card{grid-column:span 5;padding:25px 25px 26px;background:#f0eee5;min-height:235px;display:flex;flex-direction:column;align-items:flex-start}
+.writing-card h2{font-size:28px;max-width:370px;margin:22px 0 12px}
+.writing-card>p:not(.eyebrow){font-size:14px;line-height:1.65;color:var(--muted);max-width:370px}
+.writing-card .text-link{margin-top:auto;padding-top:20px}
+.lab-card{grid-column:span 7;grid-template-columns:1fr 1.15fr;border-radius:0;padding:23px 0 25px 26px;gap:18px;background:#e8ece3;min-height:235px}
+.lab-card .card-copy{padding:0 20px 0 0;align-self:center}
+.lab-card .card-copy h2{margin:13px 0 8px}
+.lab-card .card-copy>a{font-size:12px}
+.lab-card .lab-art{height:175px}
+.lab-art>span:not(.lock){border-radius:2px}
+.about-teaser{grid-template-columns:.82fr 1.18fr;gap:70px;padding:85px 0 75px;border-top:1px solid var(--line);margin-top:76px}
+.about-teaser h2{font-size:40px;line-height:1.14}
+.about-teaser p:not(.eyebrow){max-width:475px}
+.about-marker{min-height:210px;display:flex;align-items:center;justify-content:center;gap:18px;background:#e7e9df;color:var(--green);font:clamp(24px,3vw,38px) Georgia,serif}
+.about-marker i{font:20px Arial,sans-serif;color:#969a8e}
+.experience{border-top:1px solid var(--line);padding:40px 0 72px}
+.journey-intro{padding-top:65px;padding-bottom:48px}
+.journey-intro h1{font-size:clamp(48px,6.2vw,76px);line-height:1.08;letter-spacing:-2.4px}
+.journey-intro>p:not(.eyebrow){max-width:470px;color:var(--muted);font-size:17px}
+.journey-links{display:flex;gap:27px;font-size:13px;margin-top:26px}
+.story-list{border-top:1px solid var(--line)}
+.story-entry{display:grid;grid-template-columns:55px minmax(220px,.85fr) minmax(260px,1.15fr);gap:25px;align-items:start;padding:34px 0;border-bottom:1px solid var(--line);scroll-margin-top:100px}
+.story-number{font:12px monospace;color:var(--muted);padding-top:5px}
+.story-entry h2{font:30px/1.2 Georgia,'Times New Roman',serif;margin-top:7px}
+.story-copy{color:var(--muted);font-size:15px;max-width:520px}
+.journey-end{padding:65px 0 85px}
+.journey-end h2{font-size:42px}
+.journey-end .button{margin:10px 24px 0 0}
+@media(max-width:760px){
+ .site-header{width:calc(100% - 40px);min-height:88px;display:block;padding:15px 0 12px}
+ .garden-nav{max-width:245px;display:flex;flex-wrap:wrap;gap:10px 16px;padding-right:0;font-size:12px}
+ .garden-nav .wordmark{font-size:16px}
+ .social-nav{position:absolute;right:0;top:19px;gap:12px;font-size:12px}
+ .page-wrap,.site-footer{width:calc(100% - 40px)}
+ .intro{padding:52px 0 45px}
+ .intro h1{font-size:clamp(39px,10vw,48px);letter-spacing:-1.6px}
+ .intro-bottom p{font-size:15px}
+ .intro-actions{gap:18px}
+ .section-bar{flex-direction:row;align-items:center;gap:10px}
+ .section-bar>span{font-size:10px;text-align:right}
+ .work-grid{grid-template-columns:1fr;gap:32px}
+ .work-card-1,.work-card-2,.work-card-3,.work-card-4,.writing-card,.lab-card{grid-column:1;margin:0}
+ .work-card-2 .project-visual,.work-card-3 .project-visual,.work-card-4 .project-visual{height:220px}
+ .project-visual{height:220px}
+ .work-card-2,.work-card-4{max-width:94%;justify-self:end}
+ .work-card-3{max-width:94%}
+ .writing-card{min-height:220px;padding:22px}
+ .writing-card h2{font-size:26px}
+ .lab-card{grid-template-columns:1fr;padding:20px;gap:15px}
+ .lab-card .lab-art{height:145px}
+ .about-teaser{grid-template-columns:1fr;gap:22px;margin-top:50px;padding:48px 0}
+ .about-marker{min-height:130px}
+ .about-teaser h2{font-size:34px}
+ .experience{grid-template-columns:1fr;gap:20px;padding-bottom:38px}
+ .story-entry{grid-template-columns:35px 1fr;gap:10px 14px;padding:25px 0}
+ .story-number{grid-row:span 2}
+ .story-entry h2{font-size:26px}
+ .story-copy{grid-column:2;font-size:14px}
+ .journey-intro{padding-top:46px}
+ .journey-intro h1{font-size:49px}
+ .journey-links{flex-direction:column;gap:15px}
+ .journey-end h2{font-size:36px}
+}
+@media(max-width:370px){.garden-nav{max-width:220px;gap:10px 12px}.social-nav{gap:9px}.intro-actions{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
