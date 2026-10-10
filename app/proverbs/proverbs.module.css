@@ -1,0 +1,89 @@
+.page {
+  max-width: 920px;
+  padding-top: 36px;
+  padding-bottom: 64px;
+}
+
+.back {
+  display: inline-block;
+  color: var(--green);
+  font-size: 14px;
+  text-underline-offset: 5px;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+.intro {
+  padding: 62px 0 44px;
+}
+
+.intro h1 {
+  margin: 18px 0 12px;
+  font-family: 'Kohinoor Devanagari', 'Nirmala UI', Mangal, sans-serif;
+  font-size: clamp(38px, 6vw, 62px);
+  line-height: 1.5;
+  color: var(--green);
+}
+
+.intro > p:last-child {
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.collection {
+  margin: 0 0 40px;
+  border-top: 1px solid var(--line);
+  font-family: 'Kohinoor Devanagari', 'Nirmala UI', Mangal, sans-serif;
+}
+
+.entry {
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+  break-inside: avoid;
+}
+
+.entry dt {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  column-gap: 18px;
+  align-items: baseline;
+  font-size: clamp(21px, 2.5vw, 26px);
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.number {
+  font: 12px/1.8 monospace;
+  color: var(--muted);
+}
+
+.entry dd {
+  margin: 9px 0 0 60px;
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 760px) {
+  .intro {
+    padding: 42px 0 32px;
+  }
+
+  .entry {
+    padding: 24px 0;
+  }
+
+  .entry dt {
+    grid-template-columns: 28px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .entry dd {
+    margin-left: 40px;
+    font-size: 16px;
+  }
+}

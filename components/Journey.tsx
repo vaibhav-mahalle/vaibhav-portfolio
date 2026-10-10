@@ -16,7 +16,7 @@ export default function Journey() {
         <p className="eyebrow">ABOUT · A FEW TURNS ALONG THE WAY</p>
         <h1>One road led<br />to another.</h1>
         <p>A personal story in words, from village lanes to backend engineering.</p>
-        <div className="journey-links"><a href="#chapter-1">Start at the beginning ↓</a><Link href="/#work">Go to the projects ↗</Link></div>
+        <div className="journey-links"><a href="#chapter-1">Start at the beginning ↓</a><Link href="/#work">Go to the projects ↗</Link><Link href="/proverbs">Marathi proverbs →</Link></div>
       </div>
       <div className="story-list page-wrap">
         {chapters.map(chapter => (
