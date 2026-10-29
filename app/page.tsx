@@ -45,8 +45,8 @@ export default function Home() {
               </div>
               <p className="role-focus">Backend platforms · Production GenAI</p>
               <ul>
-                <li>Led 3 engineers on a report platform that produces 3–5M paper reports each year. Mentored junior developers and drove code reviews.</li>
-                <li>Built multi-agent AI services with LangGraph, semaphore-capped asyncio concurrency, streamed responses, and a six-evaluator LangSmith suite.</li>
+                <li>Led <strong>3 engineers</strong> on a report platform that produces <strong>3–5M paper reports</strong> each year. Mentored junior developers and drove code reviews.</li>
+                <li>Built multi-agent AI services with LangGraph, semaphore-capped asyncio concurrency, streamed responses, and a <strong>six-evaluator</strong> LangSmith suite.</li>
               </ul>
             </article>
             <article className="experience-role">
@@ -56,7 +56,7 @@ export default function Home() {
               </div>
               <p className="role-focus">Multi-tenant utility dashboards</p>
               <ul>
-                <li>Built time-series APIs for electric, gas, water, and solar net-metering data across a dashboard with 300K+ active customers.</li>
+                <li>Built time-series APIs for electric, gas, water, and solar net-metering data across a dashboard with <strong>300K+ active customers</strong>.</li>
                 <li>Secured services with OAuth 2.0 role-based access and improved high-traffic reads with Redis master-replica caching.</li>
               </ul>
             </article>

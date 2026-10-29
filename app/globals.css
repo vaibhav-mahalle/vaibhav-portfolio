@@ -783,6 +783,8 @@ svg {
 .garden-nav{display:flex;align-items:center;gap:25px;font-size:13px}
 .garden-nav .wordmark{font-family:Georgia,'Times New Roman',serif;font-size:17px;margin-right:5px}
 .social-nav{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:13px}
+.social-nav a.nav-resume{background:var(--ink);color:white;padding:8px 16px;border-radius:30px;font-size:13px}
+.social-nav a.nav-resume:hover{background:var(--green);color:white}
 .social-nav a:first-child{display:grid;place-items:center;width:23px;height:23px;border:1px solid var(--line);border-radius:50%;font-size:11px;font-weight:600}
 .page-wrap,.site-footer{width:min(1120px,calc(100% - 96px))}
 .intro{padding:76px 0 74px;max-width:970px}
@@ -892,6 +894,7 @@ svg {
 .experience-role ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px;line-height:1.6}
 .experience-role li{padding:3px 0 3px 2px}
 .experience-role li::marker{color:var(--green)}
+.experience-role li strong{display:inline;font-size:inherit;font-weight:600}
 .education-note{margin:0!important;padding:0!important;color:var(--muted);font-size:12px!important}
 .education-note strong{display:inline!important;font-size:12px!important;color:var(--ink)}
 .project-page .visual-note{max-width:430px}

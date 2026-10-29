@@ -13,6 +13,7 @@ export function Header() {
       <nav className="social-nav" aria-label="Social links">
         <a href="https://www.linkedin.com/in/vaibhav-mahalle" aria-label="LinkedIn">in</a>
         <a href="https://github.com/vaibhav-mahalle" aria-label="GitHub">GitHub</a>
+        <a className="nav-resume" href="/resume.pdf">Resume ↗</a>
       </nav>
     </header>
   );
