@@ -46,6 +46,8 @@ export default function WorkGrid() {
           <h2>When a lock expires, the old worker may still be working.</h2>
           <p>A timeout does not stop a slow worker from writing. A fencing token lets storage reject that stale write.</p>
           <a className="text-link" href="https://labss-three.vercel.app/labs/distributed-lock">Read the note and try the demo <span>↗</span></a>
+          <p className="eyebrow writing-card-latest">LATEST ESSAY</p>
+          <Link className="text-link" href="/writing/every-record-accounted-for">Every record accounted for: ingesting a terabyte of meter data a day <span>→</span></Link>
         </article>
         <article id="labs" className="lab-card">
           <div className="lab-art" aria-hidden="true">
