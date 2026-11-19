@@ -6,7 +6,7 @@ export function Header() {
       <nav className="garden-nav" aria-label="Main navigation">
         <Link className="wordmark" href="/">Vaibhav</Link>
         <Link href="/#work">Projects</Link>
-        <Link href="/#writing">Writing</Link>
+        <Link href="/writing">Writing</Link>
         <Link href="/#labs">Labs</Link>
         <Link href="/about">About</Link>
       </nav>
