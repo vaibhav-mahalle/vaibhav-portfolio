@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/gen-posts.mjs",
+    "predev": "node scripts/gen-posts.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -1,59 +1,73 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import { marked } from 'marked';
+import raw from './posts.generated.json';
 
-export type Post = {
+type RawPost = {
   slug: string;
   title: string;
   subtitle: string;
   date: string;
+  publishAt: string;
+  status: string;
+  series: string;
+  part: number | null;
   tags: string[];
+  words: number;
+  body: string;
+};
+
+export type Post = Omit<RawPost, 'body' | 'words'> & {
   readingMinutes: number;
   html: string;
 };
 
-const POSTS_DIR = path.join(process.cwd(), 'content', 'writing');
+export type SeriesEntry = {
+  slug: string;
+  title: string;
+  part: number;
+  date: string;
+  live: boolean;
+};
 
-function parseFrontmatter(raw: string): { data: Record<string, string>; body: string } {
-  const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
-  if (!match) return { data: {}, body: raw };
-  const data: Record<string, string> = {};
-  for (const line of match[1].split('\n')) {
-    const idx = line.indexOf(':');
-    if (idx === -1) continue;
-    data[line.slice(0, idx).trim()] = line.slice(idx + 1).trim().replace(/^"(.*)"$/, '$1');
-  }
-  return { data, body: match[2] };
+// Posts go live at 09:00 India time on their date unless publishAt says otherwise.
+function liveAt(p: RawPost): number {
+  const iso = p.publishAt || `${p.date}T09:00:00+05:30`;
+  return new Date(iso).getTime();
 }
 
-function readPost(file: string): Post | null {
-  const raw = fs.readFileSync(path.join(POSTS_DIR, file), 'utf8');
-  const { data, body } = parseFrontmatter(raw);
-  if (data.status !== 'published') return null;
-  const words = body.split(/\s+/).filter(Boolean).length;
+function isLive(p: RawPost, now: number): boolean {
+  return p.status === 'published' && !Number.isNaN(liveAt(p)) && liveAt(p) <= now;
+}
+
+function toPost(p: RawPost): Post {
+  const { body, words, ...rest } = p;
   return {
-    slug: data.slug || file.replace(/\.md$/, ''),
-    title: data.title || '',
-    subtitle: data.subtitle || '',
-    date: data.date || '',
-    tags: (data.tags || '').replace(/^\[|\]$/g, '').split(',').map((t) => t.trim()).filter(Boolean),
+    ...rest,
     readingMinutes: Math.max(1, Math.round(words / 230)),
     html: marked.parse(body, { async: false }) as string,
   };
 }
 
-export function getAllPosts(): Post[] {
-  if (!fs.existsSync(POSTS_DIR)) return [];
-  return fs
-    .readdirSync(POSTS_DIR)
-    .filter((f) => f.endsWith('.md'))
-    .map(readPost)
-    .filter((p): p is Post => p !== null)
-    .sort((a, b) => b.date.localeCompare(a.date));
+const all = raw as RawPost[];
+
+export function getAllPosts(now: number = Date.now()): Post[] {
+  return all
+    .filter((p) => isLive(p, now))
+    .sort((a, b) => liveAt(b) - liveAt(a))
+    .map(toPost);
 }
 
-export function getPost(slug: string): Post | undefined {
-  return getAllPosts().find((p) => p.slug === slug);
+export function getPost(slug: string, now: number = Date.now()): Post | undefined {
+  const p = all.find((x) => x.slug === slug);
+  return p && isLive(p, now) ? toPost(p) : undefined;
+}
+
+// All parts of a series, including scheduled ones (title and date only).
+export function getSeries(series: string, now: number = Date.now()): SeriesEntry[] {
+  if (!series) return [];
+  return all
+    .filter((p) => p.series === series && p.status === 'published')
+    .sort((a, b) => (a.part ?? 0) - (b.part ?? 0))
+    .map((p) => ({ slug: p.slug, title: p.title, part: p.part ?? 0, date: p.date, live: isLive(p, now) }));
 }
 
 export function formatDate(iso: string): string {

@@ -949,3 +949,16 @@ svg {
 .prose th,.prose td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
 .prose th{font-weight:600;color:var(--muted);font-size:13px;letter-spacing:.3px;border-bottom:1.5px solid var(--ink)}
 .prose td code{white-space:nowrap}
+
+/* Series */
+.series-box{max-width:700px;border:1px solid var(--line);border-radius:8px;padding:18px 22px;margin:0 0 44px;background:#f4f4ee}
+.series-box .eyebrow{margin:0 0 10px}
+.series-box .series-hub{margin:0 0 8px;font-size:15px}
+.series-box ol{list-style:none;padding:0;margin:0}
+.series-box li{display:flex;gap:12px;padding:6px 0;font-size:15px;border-top:1px solid var(--line)}
+.series-box li:first-child{border-top:0}
+.series-box a{color:var(--green)}
+.series-part{flex:0 0 52px;color:var(--muted);font-size:13px;padding-top:1px}
+.series-upcoming{color:var(--muted)}
+.series-upcoming em{font-style:normal;font-size:13px}
+.series-nav{max-width:700px;display:flex;justify-content:space-between;gap:24px;margin:0 0 36px;padding-top:24px;border-top:1px solid var(--line)}
