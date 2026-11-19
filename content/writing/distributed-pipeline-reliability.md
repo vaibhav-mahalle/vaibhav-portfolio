@@ -28,7 +28,7 @@ That gives at-least-once delivery, with four settings that interact:
 | Prefetch | How many messages a worker holds before it has threads for them | Timers run while messages wait |
 | Max receives → dead-letter | When to stop retrying | Too low parks transient failures; too high retries poison for days |
 
-The timeout differs by queue: an hour by default in the shared queue utilities, two minutes for aggregation queues. A chunk of a large file and one aggregation request do very different amounts of work.
+The timeout differs by queue, from about two minutes to an hour. A chunk of a large file and one aggregation request do very different amounts of work.
 
 Here is the timeline for a message that fails every time (synthetic; *N* stands for the max-receive count):
 

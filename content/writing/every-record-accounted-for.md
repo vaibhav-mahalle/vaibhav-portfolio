@@ -201,7 +201,7 @@ Upserts give you "last writer wins". The question is *last by what?* Billing dat
 
 ### Two tiers: hot data hot, history cheap
 
-Time-series data has a clear shape: recent data is read and rewritten constantly; old data is read rarely and changes only during backfills and corrections. A recent redesign of raw-data storage follows that shape:
+Time-series data has a clear shape: recent data is read and rewritten constantly; old data is read rarely and changes only during backfills and corrections. A recent redesign of raw-data storage, still being rolled out, follows that shape:
 
 ```
 reading timestamp ≥ start of current 30-day bucket  →  database (fast writes and reads)
@@ -232,7 +232,7 @@ Some files depend on others. An enrollment file creates customers; a preference 
 
 There is an ordering gate for exactly this case, but it was evaluated *before* a long queue poll, not after a message arrived. Two files landing a second apart could slip past it. The preference records failed, the message was deleted as processed, and the preferences were never retried. This was a classic check-then-act problem across a wait.
 
-The fix re-checks the gate after a message is received, and an out-of-order file is **deferred back to the queue** instead of failing. "Not yet" and "never" need different answers.
+The fix direction is to re-check the gate after a message is received, and an out-of-order file is **deferred back to the queue** instead of failing. "Not yet" and "never" need different answers.
 
 ### What is the unit of rejection?
 
