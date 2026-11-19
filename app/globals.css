@@ -945,3 +945,7 @@ svg {
 .prose ul{list-style:disc}
 .prose pre{font-size:12.5px;margin-right:-60px}
 @media (max-width:900px){.prose pre{margin-right:0}}
+.prose table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-size:15.5px}
+.prose th,.prose td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.prose th{font-weight:600;color:var(--muted);font-size:13px;letter-spacing:.3px;border-bottom:1.5px solid var(--ink)}
+.prose td code{white-space:nowrap}
