@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { Header, Footer } from '@/components/SiteShell';
 import { getAllPosts, formatDate } from '@/lib/posts';
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Writing — Vaibhav Mahalle',
   description: 'Essays on backend systems, data pipelines and reliability.',

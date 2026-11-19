@@ -3,7 +3,10 @@ title: "Every Record Accounted For"
 subtitle: "Following one smart-meter file through a terabyte-a-day ingestion pipeline"
 slug: every-record-accounted-for
 date: 2026-11-20
+publishAt: 2026-11-19T00:00:00+05:30
 status: published
+series: every-record-accounted-for
+part: 0
 tags: [data-engineering, distributed-systems, reliability, ingestion]
 ---
 
@@ -118,7 +121,7 @@ That makes ingestion **read-heavy as well as write-heavy**. A million readings c
 
 ### Retries hold threads
 
-Transient database errors are retried: up to five retries with exponential backoff starting at one second. Non-transient errors are not retried at all. That is a reasonable policy, but notice what it costs during an outage. The backoff happens on the worker thread. When the database is slow for everyone, many workers can be sleeping between retries at the same time, and the pool's effective capacity drops exactly when the backlog is growing.
+Transient database errors are retried: up to five attempts, with waits of 1, 2, 4 and 8 seconds between them. Non-transient errors are not retried at all. That is a reasonable policy, but notice what it costs during an outage. The backoff happens on the worker thread. When the database is slow for everyone, many workers can be sleeping between retries at the same time, and the pool's effective capacity drops exactly when the backlog is growing.
 
 After the last retry, the record is skipped and written to the error file. During one period of database read timeouts, that is what happened: records failed after all retries and were skipped, so customer enrollments and updates in those files were not applied. Years before that, a utility found missing enrollments from *its own* error report before the platform's monitoring flagged them.
 
